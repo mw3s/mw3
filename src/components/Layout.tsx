@@ -2,6 +2,7 @@
 import React, { ReactNode, useState, useEffect } from 'react';
 import Navigation from './Navigation';
 import CircuitBackground from './CircuitBackground';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface LayoutProps {
   children: ReactNode;
@@ -34,12 +35,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       {/* Main content */}
       <div className={`flex-1 transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         <Navigation />
-        <main className="container mx-auto py-8 px-4 sm:px-6 lg:px-8 min-h-[calc(100vh-80px)] flex flex-col">
-          {children}
-        </main>
-        <footer className="py-6 text-center text-muted-foreground text-sm">
-          <p>&copy; {new Date().getFullYear()} mw3s. All rights reserved.</p>
-        </footer>
+        <ScrollArea className="h-[calc(100vh-80px)] w-full">
+          <main className="container mx-auto py-8 px-4 sm:px-6 lg:px-8 min-h-[calc(100vh-80px)] flex flex-col">
+            {children}
+          </main>
+          <footer className="py-6 text-center text-muted-foreground text-sm">
+            <p>&copy; {new Date().getFullYear()} mw3s. All rights reserved.</p>
+          </footer>
+        </ScrollArea>
       </div>
     </div>
   );
