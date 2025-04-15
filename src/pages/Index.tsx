@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import { Link } from 'react-router-dom';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const Index = () => {
   const [loaded, setLoaded] = useState(false);
@@ -19,17 +20,18 @@ const Index = () => {
       <div className="page-transition flex flex-col items-center justify-center flex-1 text-center px-4 md:px-8">
         <div className={`transition-all duration-1000 ${loaded ? 'opacity-100 transform-none' : 'opacity-0 translate-y-8'}`}>
           <div className="mb-8 mt-12 sm:mt-0">
-            <div className="relative mx-auto rounded-full w-32 h-32 sm:w-40 sm:h-40 mb-6 overflow-hidden hover-grow">
-              <img 
-                src="https://avatars.githubusercontent.com/u/placeholder?v=4" 
-                alt="mw3s profile" 
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.src = 'https://ui-avatars.com/api/?name=MW3S&background=181818&color=fff&size=512';
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/60"></div>
+            <div className="relative mx-auto w-32 h-32 sm:w-40 sm:h-40 mb-6 overflow-hidden hover-grow">
+              <Avatar className="w-full h-full border-2 border-muted">
+                <AvatarImage 
+                  src="/lovable-uploads/d2a3ddb8-9f26-4c2b-b974-70243226a4e7.png" 
+                  alt="mw3s profile" 
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
+                />
+                <AvatarFallback className="bg-secondary text-secondary-foreground text-2xl font-bold">
+                  mw3s
+                </AvatarFallback>
+              </Avatar>
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/60 pointer-events-none"></div>
             </div>
             
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-2">
