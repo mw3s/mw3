@@ -30,16 +30,22 @@ function AnimatedRoutes() {
 }
 
 // Use HashRouter instead of BrowserRouter for GitHub Pages
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <HashRouter>
-        <AnimatedRoutes />
-      </HashRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+// Add console log to verify app initialization
+console.log("App is initializing");
+
+const App = () => {
+  console.log("App component rendering");
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <HashRouter>
+          <AnimatedRoutes />
+        </HashRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
